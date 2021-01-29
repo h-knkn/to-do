@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { JsonBoxProvider } from 'react-jsonbox'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <JsonBoxProvider
+  value={{ url: 'https://legitbackend.wtf/box_268800f8baf7ef7b0845', id: 'lghjgsjhgasj' }}
+  >
     <App />
-  </React.StrictMode>,
+  </JsonBoxProvider>,
   document.getElementById('root')
 );
 
