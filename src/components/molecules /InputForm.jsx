@@ -8,8 +8,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 const InputForm = (props) => {
 
-    
-
   return (
     <div>
       <Button variant="outlined" color="secondary" onClick={props.handleClickOpen}>

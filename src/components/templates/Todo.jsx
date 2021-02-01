@@ -55,7 +55,7 @@ const Todo = (props) => {
         const { data } = await read();
         setTasks(data);
     };
-    useEffect(() => {getData()}, [])
+    useEffect(() => {getData()}, [tasks])
 
     // 追加
     const addTask = async e => {
@@ -63,13 +63,11 @@ const Todo = (props) => {
         await create({taskTitle , doing:false})
         setTaskTitle("");
         handleClose();
-        window.location.reload();
     };
 
     // 削除
     const removeTask = async id => {
         await remove(id)
-        window.location.reload();
     };
 
     // 一括削除
@@ -81,9 +79,7 @@ const Todo = (props) => {
                 axios
                 .delete(`${url}/${id}`)
             });
-            // window.location.reload(); 
-        }
-       
+        }  
     }
 
     // タイトル編集
@@ -97,13 +93,11 @@ const Todo = (props) => {
           {
             taskTitle: newTitle,
             doing: false
-     
           },
           id
         )
+        setNewTitle("")
         setEditing(false)
-        window.location.reload();
-   
     }
 
     return(
@@ -113,8 +107,7 @@ const Todo = (props) => {
        
             <TaskList tasks={tasks} setTasks={setTasks} removeTask={removeTask} displayItems={displayItems} setDoId={setDoId}
              editing={editing} setEditing={setEditing} editTask={editTask} inputNewTask={inputNewTask} newTitle={newTitle} setNewTitle={setNewTitle}/>
-          
-
+        
             <div className="display-flex">
             <InputForm open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} inputTask={inputTask} addTask={addTask} taskTitle={taskTitle}/>
             <span className="margin"></span>
